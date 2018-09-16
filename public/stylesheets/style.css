@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Mono");
+* {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+
+.index-page a, a:visited {
+  color: white; }
+
+.index-page {
+  margin: 0;
+  text-align: center;
+  justify-content: center;
+  color: white;
+  height: 100vh;
+  background-image: url("/images/landing.jpg");
+  background-size: cover; }
+
+.index-page h1, h4 {
+  justify-content: center; }
+
+.index-content {
+  padding-top: 40vh; }
+
+.buttons {
+  justify-content: center; }
+
+.index-content button {
+  margin-top: 1vh;
+  background-color: rgba(68, 67, 67, 0.3); }
+
+/*# sourceMappingURL=style.css.map */
