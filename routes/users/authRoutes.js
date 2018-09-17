@@ -22,7 +22,7 @@ router.post("/signup", (req, res, next) => {
 
   if (username === "" || password === "") {
     req.flash('error', 'please specify a username and password to sign up')
-    res.render("userViews/signup", { message: req.flash("error") });
+    res.render("userViews/signup", { message: req.flash("error"), layout: false });
     return;
   }
 
@@ -66,8 +66,20 @@ router.post('/login', passport.authenticate('local', {
 }));
 
 router.get('/private' , ensureLogin.ensureLoggedIn('/signup'),(req, res, next)=>{
+  console.log(req.user);
+  res.render('userViews/private', {message: req.flash('success'), theUser: req.user})
+})
+
+
+router.get('/profile/:theID' , ensureLogin.ensureLoggedIn('/signup'),(req, res, next)=>{
   console.log(req.user.username);
-  res.render('userViews/private', {message: req.flash('success'), theName: req.user.username})
+  User.findById(req.params.theID)
+  .then((theUserIGet)=>{
+    res.render('userViews/profile', {message: req.flash('success'), theUser: theUserIGet})
+  })
+  .catch((err)=>{
+    next(err);
+  })
 })
 
 router.get('/logout', (req, res, next)=>{

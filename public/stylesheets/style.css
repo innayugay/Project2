@@ -8,23 +8,42 @@
 .index-page {
   margin: 0;
   text-align: center;
-  justify-content: center;
+  align-items: center;
   color: white;
   height: 100vh;
   background-image: url("/images/landing.jpg");
-  background-size: cover; }
+  background-size: cover;
+  padding-top: 40vh; }
 
 .index-page h1, h4 {
   justify-content: center; }
 
 .index-content {
-  padding-top: 40vh; }
+  background-color: rgba(15, 5, 3, 0.6);
+  width: 70vw;
+  height: 30vh;
+  margin: 0 auto;
+  padding-top: 5vh; }
 
 .buttons {
   justify-content: center; }
 
 .index-content button {
-  margin-top: 1vh;
   background-color: rgba(68, 67, 67, 0.3); }
+
+.private-page {
+  background-color: plum; }
+
+.nav-bar {
+  background-color: paleturquoise; }
+
+.nav-bar ul {
+  display: flex;
+  justify-content: flex-end; }
+
+.nav-bar li {
+  display: inline;
+  list-style: none;
+  margin: 1vw; }
 
 /*# sourceMappingURL=style.css.map */

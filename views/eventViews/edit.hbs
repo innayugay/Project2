@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+    crossorigin="anonymous">
+<link rel="stylesheet" href="/stylesheets/style.css">
+<div class="edit-event">
+
+  <form action="/events/update/{{theEvent._id}}" method="POST">
+
+      <label for="">Name</label>
+      <input type="text" name="updatedName" value="{{theEvent.name}}"> 
+      <label for="">Type</label>
+      <input type="text" name="updatedType" value="{{theEvent.type}}"> 
+      <label for="">Description</label>
+      <input type="text" name="updatedDescription" value="{{theEvent.description}}">
+      <label for="">Location</label>
+      <input type="text" name="updatedLocation" value="{{theEvent.location}}">
+     
+    
+      <button class="btn btn-success">Submit Changes</button>
+  </form>
+
+
+
+
+
+
+
+</div>

@@ -17,6 +17,7 @@ const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require('./models/User')
+const Establishment = require('./models/Establishment')
 
 
 
@@ -121,11 +122,11 @@ app.use('/', index);
 const authRoutes = require('./routes/users/authRoutes')
 app.use('/', authRoutes);
 
-// const events = require('./routes/events/events')
-// app.use('/', events);
+const events = require('./routes/events/events')
+app.use('/', events);
 
-// const est = require('./routes/establishments/est')
-// app.use('/', est);
+const est = require('./routes/establishments/est')
+app.use('/', est);
 
 
 module.exports = app;
