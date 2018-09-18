@@ -7,6 +7,8 @@ const estSchema = new Schema({
   description: String,
   address: String,
   rating: Array,
+  // totalRating: 0,
+  avgRating : {type: Number, default: 0},
   imgName: String,
   imgPath: String,
   // owner: String

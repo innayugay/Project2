@@ -1,9 +1,10 @@
 <div class="est-rating">
 
   <h1>Rate this establishment: </h1>
-  <form action="rating/{{theEst._id}}" method="POST">
+  <form action="/establishments/rating/{{theEst._id}}" method="POST">
     <label for="">Rating</label>
     <input type="number" max = "5" name="rating">
+    <button>Submit</button>
   </form>
 
 

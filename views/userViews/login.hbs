@@ -1,23 +1,32 @@
 <link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="style.css">
 
-<h1>Login</h1>
+<div class="login-page">
 
-<form action="/login" method="POST">
-  <div>
-    <label for="username">Username:</label>
-    <input type="text" name="username">
-  </div>
-  <div>
-    <label for="password">Password:</label>
-    <input type="password" name="password">
+  <div class="login-content">
+
+      <h1>Login</h1>
+
+      <form action="/login" method="POST">
+        <div>
+          <label for="username">Username:</label>
+          <input type="text" name="username">
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" name="password">
+        </div>
+
+        {{#if message}}
+        <div>{{message}}</div>
+        {{/if}}
+        
+        {{!-- <div>
+          <input type="submit" value="Log In">
+        </div> --}}
+        <button class="btn btn-outline-light">Log In</button>
+      </form>
+
   </div>
 
-  {{#if message}}
-  <div>{{message}}</div>
-  {{/if}}
-  
-  <div>
-    <input type="submit" value="Log In">
-  </div>
-</form>
+</div>

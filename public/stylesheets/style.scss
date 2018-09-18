@@ -1,18 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Mono');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 * {
-  // font-family: 'Fira Mono', monospace;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+  // font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  // font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5vh;
 }
 
 .index-page > a, a:visited {
-  color: blue;
+  color: white;
 }
 
-.index-page{
+.index-page, .login-page, .signup-page{
   margin:0;
   text-align: center;
   align-items: center;
-  
+  justify-content: center;
   color: white;
   height: 100vh;
   background-image: url('/images/landing.jpg');
@@ -22,21 +26,22 @@
 .index-page h1, h4{
   justify-content: center;
 }
-.index-content{ 
+.index-content, .login-content, .signup-content{ 
   background-color: rgba(15, 5, 3, 0.6);
   width: 70vw;
   height: 30vh;
   margin:0 auto;
   padding-top: 5vh;
-
 }
+.login-content, .signup-content{
+  padding-top: 2vh;
+}
+
 .buttons{
   justify-content: center;
 }
 
 .index-content button{
-  // margin-top: 1vh;
-  // width: 7vw;
   background-color: rgba(68, 67, 67, 0.3)
 }
 
@@ -46,7 +51,7 @@
 }
 
 .nav-bar{
-  background-color: paleturquoise;
+  background-color: black;
 }
 .nav-bar ul{
   display: flex;
@@ -58,3 +63,9 @@
   list-style: none;
   margin: 1vw;
 }
+
+
+.rating-star-icon{
+  width: 2vw;
+}
+

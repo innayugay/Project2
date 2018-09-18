@@ -30,26 +30,25 @@ router.get('/establishments/new', (req, res, next)=>{
 
 router.post('/establishments/create', uploadCloud.single('photo'), (req, res, next)=>{
 
-  // const imgPath = req.file.url;
-  // const imgName = req.file.originalname;
 
-  Establishment.create({
+
+const newEst = new Establishment({
       owner: req.body.owner,
-      // imgPath: req.file.url,
       type: req.body.type,
       name: req.body.name,
       description: req.body.description,
       address: req.body.address,
-      // rating: req.body.,
-      imgPath: req.file.url
-      // imgName: req.file.originalname
-  })
-  .then((response)=>{
+})
+
+if(req.file){
+  newEst.imgPath = req.file.url;
+}
+
+newEst.save()
+  .then(()=>{
       res.redirect('/establishments')
   })
-  .catch((err)=>{
-      next(err);
-  })
+  .catch(err =>next(err))
 
 });
 
@@ -154,17 +153,28 @@ router.get('/establishments/rating/:theID', (req,res,next)=>{
     }) 
   })
   
-// router.post('/establishments/rating/:theID', (req,res,next)=>{
+router.post('/establishments/rating/:theID', (req,res,next)=>{
 
-//   Establishment.findByIdAndUpdate(req.params.theID,{
-//     $push: {rating: req.body.rating} 
-//   })
-//   .then((theEstIGet)=>{
-    
-//   })
+  Establishment.findById(req.params.theID)
+  .then((theEstIGet)=>{
+    theEstIGet.rating.push(req.body.rating);
+    // console.log('after push: ', theEstIGet.rating)
+    const theTotalRat = theEstIGet.rating.reduce((a,b) => Number(a)+ Number(b));
+    // console.log("theTotalRat: ", theTotalRat)
+    theEstIGet.avgRating = (theTotalRat/theEstIGet.rating.length).toFixed(2);
+    console.log('after everything: ', theEstIGet);
+    theEstIGet.save()
+    .then(() => {
+      res.redirect('/establishments')
+    })
+    .catch(err => next(err))
+  })
+  .catch((err)=>{
+    next(err);
+  })
 
 
-// })
+})
 
 
 router.get('/establishments/:theid', (req, res, next)=>{

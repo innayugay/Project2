@@ -10,10 +10,16 @@
 </div>
 
 <div class="show-est container-fluid">
+
   <h2>{{est.name}}</h2>
   <h3>{{est.type}}</h3>
+  {{#if est.avgRating}}
+  <h3> <img src="/images/star.png" alt="" class="rating-star-icon">
+    Rating: {{est.avgRating}}</h3>
+  {{/if}}
   <h5>{{est.address}}</h5>
   <p>{{est.description}}</p>
+
 
 
   <form action="favourite/{{est._id}}" method="POST">

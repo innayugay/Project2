@@ -1,14 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Fira+Mono");
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 * {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5vh; }
 
 .index-page > a, a:visited {
-  color: blue; }
+  color: white; }
 
-.index-page {
+.index-page, .login-page, .signup-page {
   margin: 0;
   text-align: center;
   align-items: center;
+  justify-content: center;
   color: white;
   height: 100vh;
   background-image: url("/images/landing.jpg");
@@ -18,12 +21,15 @@
 .index-page h1, h4 {
   justify-content: center; }
 
-.index-content {
+.index-content, .login-content, .signup-content {
   background-color: rgba(15, 5, 3, 0.6);
   width: 70vw;
   height: 30vh;
   margin: 0 auto;
   padding-top: 5vh; }
+
+.login-content, .signup-content {
+  padding-top: 2vh; }
 
 .buttons {
   justify-content: center; }
@@ -35,7 +41,7 @@
   background-color: plum; }
 
 .nav-bar {
-  background-color: paleturquoise; }
+  background-color: black; }
 
 .nav-bar ul {
   display: flex;
@@ -46,5 +52,8 @@
   display: inline;
   list-style: none;
   margin: 1vw; }
+
+.rating-star-icon {
+  width: 2vw; }
 
 /*# sourceMappingURL=style.css.map */
