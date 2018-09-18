@@ -1,3 +1,33 @@
+
+  <div class="nav-bar">
+    <ul>
+      <li><a href="/profile/{{theUser._id}}">My profile</a></li>
+      <li><a href="/logout">Log Out</a></li>
+    </ul>
+
+  </div>
+
+
+<div class="profile-page">
+
+
 this is your profile
 
-{{theUser}}
+{{theUser.username}}
+
+
+
+<button class="btn btn-info"><a href="/profile/edit/{{theUser._id}}">Edit your profile</a></button>
+
+<h3>My Events:</h3>
+
+{{#each theUser.events}}
+  <h4><a href="/events/{{this._id}}">{{this.name}}</a></h4>
+
+{{/each}}
+
+
+<h3>My Establishments:{{theUser.establishments}} </h3>
+{{!-- <button class="btn btn-success">add events</button> --}}
+
+</div>

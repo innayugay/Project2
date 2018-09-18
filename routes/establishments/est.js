@@ -2,6 +2,8 @@ const express = require('express');
 const router  = express.Router();
 const Establishment = require('../../models/Establishment')
 // const uploadCloud = require('../config/cloudinary.js');
+const uploadCloud = require('../../config/cloudinary.js');
+
 
 
 /* GET Establishments page */
@@ -26,7 +28,7 @@ router.get('/establishments/new', (req, res, next)=>{
 })
 
 
-router.post('/establishments/create', (req, res, next)=>{
+router.post('/establishments/create', uploadCloud.single('photo'), (req, res, next)=>{
 
   // const imgPath = req.file.url;
   // const imgName = req.file.originalname;
@@ -39,7 +41,7 @@ router.post('/establishments/create', (req, res, next)=>{
       description: req.body.description,
       address: req.body.address,
       // rating: req.body.,
-      image: req.body.imageURL,
+      imgPath: req.file.url
       // imgName: req.file.originalname
   })
   .then((response)=>{
@@ -95,6 +97,8 @@ router.post('/establishments/update/:estID', (req, res, next)=>{
 
 
 })
+
+
 
 
 router.get('/establishments/:theid', (req, res, next)=>{

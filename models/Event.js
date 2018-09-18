@@ -8,7 +8,8 @@ const eventSchema = new Schema({
   location: {type: Schema.Types.ObjectId, ref: "Establishment"},
   date: Date,
   attendees: [{type: Schema.Types.ObjectId, ref: "User"}],
-  image: String,
+  imgName: String,
+  imgPath: String,
   host: {type: Schema.Types.ObjectId, ref: "User"}
 });
 

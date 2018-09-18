@@ -1,11 +1,17 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
     crossorigin="anonymous">
 <link rel="stylesheet" href="/stylesheets/style.css">
+<div class="nav-bar">
+    <ul>
+      <li><a href="/profile/{{theUser._id}}">My profile</a></li>
+      <li><a href="/logout">Log Out</a></li>
+    </ul>
 
+</div>
 <div class="new-est">
 
   <h2>Create a New Establishment</h2>
-  <form action="/establishments/create" method="POST">
+  <form action="/establishments/create" method="POST" enctype="multipart/form-data">
   
   <label for="">Name</label>
   <input type="text" name="name">
@@ -19,8 +25,8 @@
   <label for="">Address</label>
   <input type="text" name="address">
   <br>
-   <label for="">Image</label>
-  <input type="text" name="imageURL">
+  <label>Image</label>
+  <input type="file" name="photo">
   <br>
 
  

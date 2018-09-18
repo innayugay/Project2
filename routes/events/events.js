@@ -1,7 +1,10 @@
 const express = require('express');
 const router  = express.Router();
 const Event = require('../../models/Event')
-// const uploadCloud = require('../config/cloudinary.js');
+const User = require('../../models/User')
+// const passport     = require('passport');
+const uploadCloud = require('../../config/cloudinary.js');
+// passport.authorize();
 
 
 /* GET Establishments page */
@@ -9,7 +12,7 @@ const Event = require('../../models/Event')
   router.get('/events', (req, res, next) => {
     Event.find()
       .then((theThingIGetBack)=>{
-        console.log(theThingIGetBack);
+        // console.log(`=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= ${theThingIGetBack}`);
         res.render('eventViews/index',{theList: theThingIGetBack})
   })
   .catch((err)=>{
@@ -26,7 +29,7 @@ router.get('/events/new', (req, res, next)=>{
 })
 
 
-router.post('/events/create', (req, res, next)=>{
+router.post('/events/create', uploadCloud.single('photo'), (req, res, next)=>{
 
   // const imgPath = req.file.url;
   // const imgName = req.file.originalname;
@@ -35,7 +38,8 @@ router.post('/events/create', (req, res, next)=>{
      name: req.body.name,
      type: req.body.type,
      description: req.body.description,
-     date: req.body.date
+     date: req.body.date,
+     imgPath: req.file.url
   })
   .then((response)=>{
       res.redirect('/events')
@@ -93,9 +97,34 @@ router.post('/events/update/:estID', (req, res, next)=>{
 })
 
 
+router.post('/events/interested/:theID', (req,res,next)=>{
+  
+  Event.findById(req.params.theID)
+  .then((theEventIGet)=>{
+    console.log(`=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= ${req.session.currentUser}=-=-=-=-=-=-=-==-=-=-=-=-=`);
+    User.findByIdAndUpdate(req.session.currentUser._id, {
+      $push: {events: theEventIGet} 
+    }) 
+    .populate('Events')
+    .populate('Establishments')
+    .then((response)=>{
+      res.redirect('/events')
+    })
+    .catch((err)=>{
+      next(err)
+    })
+  })
+  .catch((err)=>{
+    next(err);
+  })
+})
+
+
 router.get('/events/:theid', (req, res, next)=>{
 
   Event.findById(req.params.theid)
+  .populate('Users')
+  .populate('Establishments')
   .then((theThingIGetBack)=>{
     res.render('eventViews/show', {event: theThingIGetBack})
   })
