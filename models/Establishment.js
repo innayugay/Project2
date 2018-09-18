@@ -6,7 +6,7 @@ const estSchema = new Schema({
   name: String,
   description: String,
   address: String,
-  rating: Number,
+  rating: Array,
   imgName: String,
   imgPath: String,
   // owner: String

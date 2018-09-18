@@ -4,7 +4,7 @@ const Event = require('../../models/Event')
 const User = require('../../models/User')
 // const passport     = require('passport');
 const uploadCloud = require('../../config/cloudinary.js');
-const blah = 0;
+let blah = 0;
 // passport.authorize();
 
 
@@ -14,7 +14,7 @@ const blah = 0;
     Event.find()
       .then((theThingIGetBack)=>{
         // console.log(`=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= ${theThingIGetBack}`);
-        res.render('eventViews/index',{theList: theThingIGetBack})
+        res.render('eventViews/index',{theList: theThingIGetBack, theUser: req.session.currentUser})
   })
   .catch((err)=>{
     next(err);
@@ -25,7 +25,7 @@ const blah = 0;
 
 
 router.get('/events/new', (req, res, next)=>{
-  res.render('eventViews/create');
+  res.render('eventViews/create', {theUser: req.session.currentUser});
 
 })
 
@@ -69,7 +69,7 @@ router.post('/events/delete/:id', (req, res, next)=>{
 router.get('/events/edit/:estID', (req, res, next)=>{
   Event.findById(req.params.estID)
   .then((theThingIGetBack)=>{
-    res.render('eventViews/edit', {theEvent: theThingIGetBack })
+    res.render('eventViews/edit', {theEvent: theThingIGetBack, theUser: req.session.currentUser })
   })
 
   .catch((err)=>{
@@ -99,45 +99,58 @@ router.post('/events/update/:estID', (req, res, next)=>{
 
 
 router.post('/events/interested/:theID', (req,res,next)=>{
+  console.log(" ---------------------------------- THIS IS CURRENT USER:",req.session.currentUser._id.toString())
+    Event.findById(req.params.theID)
+    .then((theEventIGet)=>{
+      console.log("----------------------------------------THIS IS THE EVENT I GET:", theEventIGet.attendees)
+      if(  theEventIGet.attendees.indexOf(req.user._id) > -1 ){
+        // console.log("=-=-=-=-==-=-=-=-=-= THE USER IS ALREADY THERE =-=-=-=-=-=-=-=-=-=-");
+        res.render('eventViews/show', {message: req.flash("You've already added this event!"), theUser: req.session.currentUser});
+        // res.redirect('/events')
+      }
+      else{
+        // console.log("the user is not in the list. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ");
+        Event.findById(req.params.theID)
+        .then((theEventIGet)=>{
+          
+          User.findByIdAndUpdate(req.session.currentUser._id, {
+            $push: {events: theEventIGet} 
+          }) 
+          .populate('Events')
+          .populate('Establishments')
+          .then((response)=>{
+            blah ++
+            res.redirect('/events')
+          })
+          .catch((err)=>{
+            next(err)
+          })
+        })
+        .catch((err)=>{
+          next(err);
+        })
+      
+        User.findByIdAndUpdate(req.session.currentUser._id)
+        .then((theUserIGet)=>{
+            Event.findByIdAndUpdate(req.params.theID,{
+              $push: {attendees: theUserIGet}
+            })
+            .populate('attendees')
+            .then((response)=>{
+              res.redirect('/events')
+            })
+            .catch((err)=>{
+              next(err);
+            })
+        })
+        .catch((err)=>{
+          next(err);
+        });
+      }
   
-  Event.findById(req.params.theID)
-  .then((theEventIGet)=>{
-    console.log(`=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= ${req.session.currentUser}=-=-=-=-=-=-=-==-=-=-=-=-=`);
-    User.findByIdAndUpdate(req.session.currentUser._id, {
-      $push: {events: theEventIGet} 
-    }) 
-    .populate('Events')
-    .populate('Establishments')
-    .then((response)=>{
-      blah ++
-      res.redirect('/events')
-    })
-    .catch((err)=>{
-      next(err)
     })
   })
-  .catch((err)=>{
-    next(err);
-  })
 
-  User.findByIdAndUpdate(req.session.currentUser._id)
-  .then((theUserIGet)=>{
-      Event.findByIdAndUpdate(req.params.theID,{
-        $push: {attendees: theUserIGet}
-      })
-      .populate('attendees')
-      .then((response)=>{
-        res.redirect('/events')
-      })
-      .catch((err)=>{
-        next(err);
-      })
-  })
-  .catch((err)=>{
-    next(err);
-  });
-
-})
 
 
 router.get('/events/:theid', (req, res, next)=>{
@@ -146,7 +159,21 @@ router.get('/events/:theid', (req, res, next)=>{
   .populate('attendees')
   .populate('establishments')
   .then((theThingIGetBack)=>{
-    res.render('eventViews/show', {event: theThingIGetBack, blah})
+    res.render('eventViews/show', {event: theThingIGetBack, theUser: req.session.currentUser})
+  })
+  .catch((err)=>{
+     next(err);
+  })
+
+})
+
+router.get('/events/:theid/attendees', (req, res, next)=>{
+
+  Event.findById(req.params.theid)
+  .populate('attendees')
+ 
+  .then((theThingIGetBack)=>{
+    res.render('eventViews/attendees', {event: theThingIGetBack, theUser: req.session.currentUser})
   })
   .catch((err)=>{
      next(err);

@@ -120,7 +120,7 @@ router.get('/profile/edit/:theID', (req, res, next)=>{
   })
 })
 
-router.get('/profile/:theID' , ensureLogin.ensureLoggedIn('/signup'),(req, res, next)=>{
+router.get('/profile/:theID' , ensureLogin.ensureLoggedIn('/login'),(req, res, next)=>{
   // console.log(req.user.username);
   User.findById(req.params.theID)
   .populate('events')

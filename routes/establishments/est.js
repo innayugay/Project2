@@ -12,7 +12,7 @@ const uploadCloud = require('../../config/cloudinary.js');
     Establishment.find()
       .then((listOfEstablishments)=>{
         console.log(listOfEstablishments);
-        res.render('establishmentViews/index',{theList: listOfEstablishments})
+        res.render('establishmentViews/index',{theList: listOfEstablishments, theUser: req.session.currentUser})
   })
   .catch((err)=>{
     next(err);
@@ -23,7 +23,7 @@ const uploadCloud = require('../../config/cloudinary.js');
 
 
 router.get('/establishments/new', (req, res, next)=>{
-  res.render('establishmentViews/create');
+  res.render('establishmentViews/create', {theUser: req.session.currentUser});
 
 })
 
@@ -71,7 +71,7 @@ router.post('/establishments/delete/:id', (req, res, next)=>{
 router.get('/establishments/edit/:estID', (req, res, next)=>{
   Establishment.findById(req.params.estID)
   .then((theThingIGetBack)=>{
-    res.render('establishmentViews/edit', {theEstablishment: theThingIGetBack })
+    res.render('establishmentViews/edit', {theEstablishment: theThingIGetBack, theUser: req.session.currentUser })
   })
 
   .catch((err)=>{
@@ -126,7 +126,7 @@ router.get('/establishments/:theid', (req, res, next)=>{
 
   Establishment.findById(req.params.theid)
   .then((theEstablishment)=>{
-    res.render('establishmentViews/show', {est: theEstablishment})
+    res.render('establishmentViews/show', {est: theEstablishment, theUser: req.session.currentUser})
   })
   .catch((err)=>{
      next(err);

@@ -2,14 +2,23 @@ tuesday:
 
 1. add establishments to users                    +
 2. display est and events in my profile           +
-3. push attendees to the events
-4. show the number of attendees of each event
+3. push attendees to the events                   +
+   - don't add the same user twice                +  
+   - show flash message                           o
+4. show the number of attendees of each event     +
+5. make the number clickable to display everyone who wants to go    +
+6. figure out the navbar
+
+
+
+7. make the attendees clickable???? 
 
 
 wednesday:
 
-1. rating
-2. editing restrictions?
+1. rating/likes&dislikes
+2. display rating/likes
+2. editing restrictions???
 3. styling
 
 

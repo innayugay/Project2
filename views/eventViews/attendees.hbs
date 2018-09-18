@@ -1,0 +1,14 @@
+<div class="nav-bar">
+    <ul>
+      <li><a href="/private">Home</a></li>
+      <li><a href="/profile/{{theUser._id}}">My profile</a></li>
+      <li><a href="/logout">Log Out</a></li>
+    </ul>
+
+</div>
+<h1>these people are interested in the event: </h1>
+
+{{#each event.attendees}}
+<h3><a href="/profile/{{this._id}}">{{this.username}}</a></h3>
+
+{{/each}}
