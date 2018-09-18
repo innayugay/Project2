@@ -105,7 +105,8 @@ router.post('/events/interested/:theID', (req,res,next)=>{
       console.log("----------------------------------------THIS IS THE EVENT I GET:", theEventIGet.attendees)
       if(  theEventIGet.attendees.indexOf(req.user._id) > -1 ){
         // console.log("=-=-=-=-==-=-=-=-=-= THE USER IS ALREADY THERE =-=-=-=-=-=-=-=-=-=-");
-        res.render('eventViews/show', {message: req.flash("You've already added this event!"), theUser: req.session.currentUser});
+        req.flash("error", "You've already added this event!")
+        res.render('eventViews/show', {event: theEventIGet, message: req.flash("error"), theUser: req.session.currentUser});
         // res.redirect('/events')
       }
       else{

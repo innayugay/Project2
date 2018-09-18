@@ -4,7 +4,7 @@
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-.index-page a, a:visited {
+.index-page > a, a:visited {
   color: blue;
 }
 
@@ -51,6 +51,7 @@
 .nav-bar ul{
   display: flex;
   justify-content: flex-end;
+  margin: 0;
 }
 .nav-bar li{
   display: inline;

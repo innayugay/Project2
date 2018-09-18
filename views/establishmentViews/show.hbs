@@ -19,9 +19,17 @@
   <form action="favourite/{{est._id}}" method="POST">
     <button class="btn btn-warning">Add to favourites</button>
   </form>
+  
+  {{#if message}}
+    <div class="error-message">{{ message }}</div>
+  {{/if}}
+
 
   <div><img src="{{est.imgPath}}" alt=""></div>
   <button class="btn btn-primary"><a href="edit/{{est._id}}">Edit</a></button>
+
+  <h4>Have you been here? Tell us what you think</h4>
+  <h4><a href="rating/{{est._id}}">Give this place a rating</a></h4>
 
 
 </div>

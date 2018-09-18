@@ -100,26 +100,71 @@ router.post('/establishments/update/:estID', (req, res, next)=>{
 
 router.post('/establishments/favourite/:theID', (req,res,next)=>{
   
-  Establishment.findById(req.params.theID)
-  .then((thePlaceIGet)=>{
-    console.log(`=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= ${req.session.currentUser}=-=-=-=-=-=-=-==-=-=-=-=-=`);
-    User.findByIdAndUpdate(req.session.currentUser._id, {
-      $push: {establishments: thePlaceIGet} 
-    }) 
-    .populate('Events')
-    .populate('Establishments')
-    .then((response)=>{
-      res.redirect('/establishments')
-    })
-    .catch((err)=>{
-      next(err)
-    })
+  User.findById(req.session.currentUser._id)
+  .then((theUserIGetBack)=>{
+    if( theUserIGetBack.establishments.indexOf(req.params.theID) > -1){
+      Establishment.findById(req.params.theID)
+      .then((theEstIGet)=>{
+        req.flash("error", "You've already added this establishment!")
+        res.render('establishmentViews/show', {est: theEstIGet, message: req.flash("error")})
+      })
+      .catch((err)=>{
+        next(err);
+      })
+    }
+    else{
+      
+      Establishment.findById(req.params.theID)
+      .then((thePlaceIGet)=>{
+        console.log(`=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= ${req.session.currentUser}=-=-=-=-=-=-=-==-=-=-=-=-=`);
+        User.findByIdAndUpdate(req.session.currentUser._id, {
+          $push: {establishments: thePlaceIGet} 
+        }) 
+        .populate('Events')
+        .populate('Establishments')
+        .then((response)=>{
+          res.redirect('/establishments')
+        })
+        .catch((err)=>{
+          next(err)
+        })
+      })
+      .catch((err)=>{
+        next(err);
+      })
+
+
+    }
+
   })
   .catch((err)=>{
-    next(err);
+      next(err);
   })
+  
 })
 
+router.get('/establishments/rating/:theID', (req,res,next)=>{
+
+    Establishment.findById(req.params.theID)
+    .then((theEstThatIGet)=>{
+      res.render('establishmentViews/rating', {theEst:theEstThatIGet})
+    })
+    .catch((err)=>{
+      next(err);
+    }) 
+  })
+  
+// router.post('/establishments/rating/:theID', (req,res,next)=>{
+
+//   Establishment.findByIdAndUpdate(req.params.theID,{
+//     $push: {rating: req.body.rating} 
+//   })
+//   .then((theEstIGet)=>{
+    
+//   })
+
+
+// })
 
 
 router.get('/establishments/:theid', (req, res, next)=>{
