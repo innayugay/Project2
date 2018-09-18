@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const Establishment = require('../../models/Establishment')
-// const uploadCloud = require('../config/cloudinary.js');
+const User = require('../../models/User')
 const uploadCloud = require('../../config/cloudinary.js');
 
 
@@ -98,6 +98,27 @@ router.post('/establishments/update/:estID', (req, res, next)=>{
 
 })
 
+router.post('/establishments/favourite/:theID', (req,res,next)=>{
+  
+  Establishment.findById(req.params.theID)
+  .then((thePlaceIGet)=>{
+    console.log(`=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= ${req.session.currentUser}=-=-=-=-=-=-=-==-=-=-=-=-=`);
+    User.findByIdAndUpdate(req.session.currentUser._id, {
+      $push: {establishments: thePlaceIGet} 
+    }) 
+    .populate('Events')
+    .populate('Establishments')
+    .then((response)=>{
+      res.redirect('/establishments')
+    })
+    .catch((err)=>{
+      next(err)
+    })
+  })
+  .catch((err)=>{
+    next(err);
+  })
+})
 
 
 

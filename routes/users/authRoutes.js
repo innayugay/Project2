@@ -87,7 +87,8 @@ router.post('/login',
     if (bcrypt.compareSync(ps, theUser.password)) {
       req.session.currentUser = theUser;
       console.log("session info ======================", req.session.currentUser.username);
-      res.render("userViews/private", {theUser: theUser});
+      res.redirect('/private')
+      // res.render("userViews/private", {theUser: theUser});
       console.log('=-=-=-=-=-==- Session Started', theUser)
     } else {
       res.render("userViews/login", {
@@ -102,11 +103,12 @@ router.post('/login',
   });
 
 
-// router.get('/private' , ensureLogin.ensureLoggedIn('/login'),(req, res, next)=>{
-//   // let theUser= req.user
-//   console.log(currentUser + " CURRRENT USERRRRRRRRR");
-//   res.render('userViews/private', {message: req.flash('success'), currentUser})
-// });
+router.get('/private' , ensureLogin.ensureLoggedIn('/login'),(req, res, next)=>{
+  // let theUser= req.user
+  // console.log(currentUser + " CURRRENT USERRRRRRRRR");
+  const currentUser = req.session.currentUser;
+  res.render('userViews/private', {message: req.flash('success'), currentUser})
+});
 
 router.get('/profile/edit/:theID', (req, res, next)=>{
   User.findById(req.params.theID)

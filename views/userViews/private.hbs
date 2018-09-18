@@ -2,7 +2,8 @@
 
   <div class="nav-bar">
     <ul>
-      <li><a href="/profile/{{theUser._id}}">My profile</a></li>
+      <li><a href="/private">Home</a></li>
+      <li><a href="/profile/{{currentUser._id}}">My profile</a></li>
       <li><a href="/logout">Log Out</a></li>
     </ul>
 
@@ -10,7 +11,7 @@
 
 <div class="private-page">
 
-  <h2>Hello, {{theUser.username}}.</h2>
+  <h2>Hello, {{currentUser.username}}.</h2>
   <h3>What are you looking for today?</h3>
 
   <button class="btn btn-outline-dark"><a href="/events"> Discover Events</a></button>

@@ -4,6 +4,7 @@ const Event = require('../../models/Event')
 const User = require('../../models/User')
 // const passport     = require('passport');
 const uploadCloud = require('../../config/cloudinary.js');
+const blah = 0;
 // passport.authorize();
 
 
@@ -108,6 +109,7 @@ router.post('/events/interested/:theID', (req,res,next)=>{
     .populate('Events')
     .populate('Establishments')
     .then((response)=>{
+      blah ++
       res.redirect('/events')
     })
     .catch((err)=>{
@@ -117,27 +119,40 @@ router.post('/events/interested/:theID', (req,res,next)=>{
   .catch((err)=>{
     next(err);
   })
+
+  User.findByIdAndUpdate(req.session.currentUser._id)
+  .then((theUserIGet)=>{
+      Event.findByIdAndUpdate(req.params.theID,{
+        $push: {attendees: theUserIGet}
+      })
+      .populate('attendees')
+      .then((response)=>{
+        res.redirect('/events')
+      })
+      .catch((err)=>{
+        next(err);
+      })
+  })
+  .catch((err)=>{
+    next(err);
+  });
+
 })
 
 
 router.get('/events/:theid', (req, res, next)=>{
 
   Event.findById(req.params.theid)
-  .populate('Users')
-  .populate('Establishments')
+  .populate('attendees')
+  .populate('establishments')
   .then((theThingIGetBack)=>{
-    res.render('eventViews/show', {event: theThingIGetBack})
+    res.render('eventViews/show', {event: theThingIGetBack, blah})
   })
   .catch((err)=>{
      next(err);
   })
 
 })
-
-
-// router.get('/fancypage', (req, res, next)=>{
-//   res.render('estViews/fancy.hbs')
-// })
 
 
 
