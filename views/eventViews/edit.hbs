@@ -12,7 +12,7 @@
 </div>
 
 <div class="edit-event">
-  <form action="/events/update/{{theEvent._id}}" method="POST">
+  <form action="/events/update/{{theEvent._id}}" method="POST" nctype="multipart/form-data">
 
       <label for="">Name</label>
       <input type="text" name="updatedName" value="{{theEvent.name}}"> 
@@ -23,7 +23,8 @@
       <label for="">Location</label>
       <input type="text" name="updatedLocation" value="{{theEvent.location}}">
      
-    
+      <label>Image</label>
+      <input type="file" name="photo">
       <button class="btn btn-success">Submit Changes</button>
   </form>
 

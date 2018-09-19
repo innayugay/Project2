@@ -5,6 +5,17 @@
   font-size: 2.2vh;
   color: #30231c; }
 
+.generalBackground {
+  background-color: #b5a3a1; }
+
+.tanBackground {
+  background-color: #f6f1ed; }
+
+.error-message {
+  color: white;
+  background-color: #8e342a;
+  width: 20vw; }
+
 .nav-bar {
   background-color: #f6f1ed; }
 
@@ -66,12 +77,11 @@ a:hover {
 
 .private-page, .show-event {
   background-color: #b5a3a1;
-  height: 100vh;
+  background-size: cover;
   padding: 5vh; }
 
 .event-index {
   background-color: #f6f1ed;
-  height: 100vh;
   padding: 5vh; }
 
 .private-buttons {

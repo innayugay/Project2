@@ -9,7 +9,17 @@
   font-size: 2.2vh;
   color: rgb(48, 35, 28);
 }
-
+.generalBackground{
+  background-color: rgb(181, 163, 161);
+}
+.tanBackground{
+  background-color: rgb(246, 241, 237);
+}
+.error-message{
+  color: white;
+  background-color: rgb(142, 52, 42);
+  width: 20vw;
+}
 .nav-bar{
   // background-color: rgba(89, 84, 78, 0.4);
   background-color: rgb(246, 241, 237);  
@@ -83,12 +93,14 @@ a:hover{
 .private-page , .show-event{
   // background-color: rgb(246, 241, 237);  
   background-color: rgb(181, 163, 161);
-  height: 100vh;
+  // height: 100vh;
+  background-size: cover;
   padding: 5vh;
 }
+
 .event-index{
   background-color: rgb(246, 241, 237);
-  height: 100vh;
+  // height: 100vh;
   padding: 5vh;
 }
 

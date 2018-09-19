@@ -14,6 +14,7 @@ let blah = 0;
     Event.find()
       .then((theThingIGetBack)=>{
         // console.log(`=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= ${theThingIGetBack}`);
+        res.locals.bodyClass = 'tanBackground'
         res.render('eventViews/index',{theList: theThingIGetBack, theUser: req.session.currentUser})
   })
   .catch((err)=>{
