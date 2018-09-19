@@ -99,10 +99,10 @@ router.post('/events/update/:estID', (req, res, next)=>{
 
 
 router.post('/events/interested/:theID', (req,res,next)=>{
-  console.log(" ---------------------------------- THIS IS CURRENT USER:",req.session.currentUser._id.toString())
+  
     Event.findById(req.params.theID)
     .then((theEventIGet)=>{
-      console.log("----------------------------------------THIS IS THE EVENT I GET:", theEventIGet.attendees)
+    
       if(  theEventIGet.attendees.indexOf(req.user._id) > -1 ){
         // console.log("=-=-=-=-==-=-=-=-=-= THE USER IS ALREADY THERE =-=-=-=-=-=-=-=-=-=-");
         req.flash("error", "You've already added this event!")

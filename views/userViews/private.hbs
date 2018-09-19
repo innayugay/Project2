@@ -1,23 +1,41 @@
 
-
+{{!-- <link rel="stylesheet" href="animate.min.css"> --}}
   <div class="nav-bar">
     <ul>
       <li><a href="/private">Home</a></li>
       <li><a href="/profile/{{currentUser._id}}">My profile</a></li>
       <li><a href="/logout">Log Out</a></li>
     </ul>
+  </div>
+<body>
+  
+<div class="private-page container-fluid">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <h2 class="animated fadeIn delay-2s col-md-4">Hello, <span id="hello-user" class="bold">{{currentUser.username}}</span>.</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <h3 class="col-md-5">What are you looking for today?</h3>
+  </div>
+  <div class="events-or-places">
+    <div class="private-buttons">
+      {{!-- <div class="col-md-"></div> --}}
+      <button class="btn btn-outline-light">
+        <img src="/images/eventimage.jpg" alt="" class="private-images">
+        <br>
+        <a href="/events"> Discover Events</a>
+      </button>
+    
+      <button class="btn btn-outline-light">
+        <img src="/images/placesimage.jpg" alt="" class="private-images">
+        <br>
+        <a href="/establishments">Discover Places</a>
+      </button>
+    </div>
 
   </div>
-
-<div class="private-page">
-
-  <h2>Hello, {{currentUser.username}}.</h2>
-  <h3>What are you looking for today?</h3>
-
-  <button class="btn btn-outline-dark"><a href="/events"> Discover Events</a></button>
-  <button class="btn btn-outline-dark"><a href="/establishments">Discover Places</a></button>
-  {{!-- <button class="btn btn-secondary"><a href="/logout">Log Out</a></button> --}}
-
-{{!-- <h2> OOOOOOOOOOOOGHGHHHHHHHHH!    {{currentUser.username}}</h2> --}}
+</body>
+  
 </div>
 

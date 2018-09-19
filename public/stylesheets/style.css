@@ -2,10 +2,36 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 * {
   font-family: 'Montserrat', sans-serif;
-  font-size: 2.5vh; }
+  font-size: 2.2vh;
+  color: #30231c; }
 
-.index-page > a, a:visited {
+.nav-bar {
+  background-color: #f6f1ed; }
+
+.nav-bar-dark {
+  background-color: #b5a3a1; }
+
+.nav-bar ul, .nav-bar-dark ul {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0; }
+
+.nav-bar li, .nav-bar-dark li {
+  display: inline;
+  list-style: none;
+  margin: 2vw; }
+
+.rating-star-icon, .user-icon {
+  width: 2vw; }
+
+a, a:visited {
   color: white; }
+
+a:hover {
+  color: #30231c; }
+
+.nav-bar a {
+  color: #30231c; }
 
 .index-page, .login-page, .signup-page {
   margin: 0;
@@ -26,7 +52,8 @@
   width: 70vw;
   height: 30vh;
   margin: 0 auto;
-  padding-top: 5vh; }
+  padding-top: 5vh;
+  color: white; }
 
 .login-content, .signup-content {
   padding-top: 2vh; }
@@ -37,23 +64,58 @@
 .index-content button {
   background-color: rgba(68, 67, 67, 0.3); }
 
-.private-page {
-  background-color: plum; }
+.private-page, .show-event {
+  background-color: #b5a3a1;
+  height: 100vh;
+  padding: 5vh; }
 
-.nav-bar {
-  background-color: black; }
+.event-index {
+  background-color: #f6f1ed;
+  height: 100vh;
+  padding: 5vh; }
 
-.nav-bar ul {
+.private-buttons {
+  margin-top: 4vh;
+  padding: 0;
   display: flex;
-  justify-content: flex-end;
-  margin: 0; }
+  justify-content: space-around; }
 
-.nav-bar li {
-  display: inline;
-  list-style: none;
-  margin: 1vw; }
+.private-buttons a {
+  font-size: 3vh; }
 
-.rating-star-icon {
-  width: 2vw; }
+.private-images {
+  height: 20%;
+  width: 45vw; }
+
+#hello-user {
+  text-transform: uppercase;
+  font-size: 5vh; }
+
+.each-event {
+  text-align: center;
+  padding-top: 2vh;
+  margin: 5vh;
+  width: 40vw;
+  height: 55vh;
+  float: left;
+  background-color: rgba(106, 87, 80, 0.5); }
+
+.each-event-image {
+  height: 35vh; }
+
+.bold {
+  font-weight: bolder;
+  font-size: 3vh; }
+
+.capitalize {
+  text-transform: capitalize;
+  font-size: 8vh; }
+
+.capitalize-sm {
+  text-transform: capitalize;
+  font-size: 4vh; }
+
+.event-image {
+  width: 80vw; }
 
 /*# sourceMappingURL=style.css.map */

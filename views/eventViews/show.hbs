@@ -9,29 +9,34 @@
 
   </div>
 
-<div class="show-est container-fluid">
-  <h2>{{event.name}}</h2>
-  <h3>{{event.type}}</h3>
+<div class="show-event container-fluid">
+  <h1><span class="capitalize bold">{{event.name}}</span></h1>
+  <h3 class="capitalize-sm">{{event.type}}</h3>
   <h5>{{event.address}}</h5>
-  <h5>When: {{event.date}}</h5>
+  <h5>When? <span class="bold">{{event.date}}</span></h5>
 
-  <h1> <a href="{{event._id}}/attendees">{{event.attendees.length}} people are interested in this event</a> </h1>
+  <div> 
+    <img src="/images/user.png" alt="" class="user-icon">
+    <a href="/events/{{event._id}}/attendees">{{event.attendees.length}} people are interested in this event</a> 
+    <form action="/events/interested/{{event._id}}" method="POST">
+        <button class="btn btn-outline-warning">I am interested in this event</button>
+    </form>
+     {{#if message}}
+        <div class="error-message">{{ message }}</div>
+      {{/if}}
+
+  </div>
  
+  <h3>{{event.description}}</h3>
 
+  <div><img src="{{event.imgPath}}" alt="" class="event-image"></div>
 
-  <p>{{event.description}}</p>
+  <div class="row">
+           <button class="btn btn-primary"><a href="edit/{{event._id}}">Edit</a></button>
+      <form action="delete/{{event._id}}" method="POST">
+          <button class="btn btn-danger">Delete</button>
+      </form>
 
-  <div class="event-image"><img src="{{event.imgPath}}" alt=""></div>
-
-  <form action="interested/{{event._id}}" method="POST">
-    <button>I am interested in this event</button>
-  </form>
-
-   {{#if message}}
-    <div class="error-message">{{ message }}</div>
-  {{/if}}
-
-  <button class="btn btn-primary"><a href="edit/{{event._id}}">Edit</a></button>
-
+  </div>
 
 </div>
