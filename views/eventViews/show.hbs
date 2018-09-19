@@ -32,9 +32,11 @@
   <div><img src="{{event.imgPath}}" alt="" class="event-image"></div>
 
   <div class="row">
-           <button class="btn btn-primary"><a href="edit/{{event._id}}">Edit</a></button>
+      <div class="col-md-1"></div>
+      <button class="btn btn-outline-dark col-md-2" id="orange-button"><a href="edit/{{event._id}}">Edit this event</a></button>
+      <div class="col-md-1"></div>
       <form action="delete/{{event._id}}" method="POST">
-          <button class="btn btn-danger">Delete</button>
+          <button class="btn btn-outline-danger" id="red-button">Delete</button>
       </form>
 
   </div>

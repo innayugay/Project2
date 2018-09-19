@@ -12,21 +12,41 @@
 </div>
 
 <div class="edit-event">
-  <form action="/events/update/{{theEvent._id}}" method="POST" nctype="multipart/form-data">
+  <form action="/events/update/{{theEvent._id}}" method="POST" enctype="multipart/form-data">
 
-      <label for="">Name</label>
+      {{!-- <label for="">Name</label>
       <input type="text" name="updatedName" value="{{theEvent.name}}"> 
+      <br>
       <label for="">Type</label>
       <input type="text" name="updatedType" value="{{theEvent.type}}"> 
+      <br>
       <label for="">Description</label>
       <input type="text" name="updatedDescription" value="{{theEvent.description}}">
-      <label for="">Location</label>
-      <input type="text" name="updatedLocation" value="{{theEvent.location}}">
-     
+      <br>
       <label>Image</label>
       <input type="file" name="photo">
-      <button class="btn btn-success">Submit Changes</button>
-  </form>
+      <button class="btn btn-success">Submit Changes</button> --}}
+
+  
+            <label for="">Name</label>
+            <input type="text" name="updatedName" value="{{theEvent.name}}">
+            <br>
+            <label for="">Type</label>
+            <input type="text" name="updatedType" value="{{theEvent.name}}">
+            <br>
+            <label for="">Description</label>
+            <input type="text" name="updatedDescription"value="{{theEvent.name}}">
+            <br>
+            <label for="">Date</label>
+            <input type="date" name="updatedDate" value="{{theEvent.name}}">
+            <br>
+            
+            <label>Image</label>
+            <input type="file" name="photo" value="{{theEvent.name}}">
+
+            <button class="btn btn-success">Submit Changes</button>
+
+            </form>
 
 
 

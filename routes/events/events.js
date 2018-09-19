@@ -79,12 +79,13 @@ router.get('/events/edit/:estID', (req, res, next)=>{
 
 })
 
-router.post('/events/update/:estID', (req, res, next)=>{
+router.post('/events/update/:estID', uploadCloud.single('photo'), (req, res, next)=>{
   Event.findByIdAndUpdate(req.params.estID, {
      name: req.body.updatedName,
      type: req.body.updatedType,
      description: req.body.updatedDescription,
-     date: req.body.updatedDate
+     date: req.body.updatedDate,
+     imgPath: req.file.url
     //  address: req.body.updatedAddress,
 
   })

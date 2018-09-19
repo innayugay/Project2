@@ -90,7 +90,7 @@ a:hover{
   background-color: rgba(68, 67, 67, 0.3)
 }
 
-.private-page , .show-event{
+.private-page , .show-event, .edit-event{
   // background-color: rgb(246, 241, 237);  
   background-color: rgb(181, 163, 161);
   // height: 100vh;
@@ -125,10 +125,8 @@ a:hover{
 
 .each-event{
   text-align: center;
-  padding-top: 2vh;
+  padding: 2vh;
   margin: 5vh;
-  width: 40vw;
-  height: 55vh;
   float:left;
   background-color: rgba(106, 87, 80, 0.5);
 }
@@ -152,6 +150,18 @@ a:hover{
 }
 
 .event-image{
+  margin-bottom: 2vh;
   width: 80vw;
+}
+.fill-dark{
+  background-color: rgba(61, 58, 58, 0.8);
+}
+
+#red-button{
+  background-color: rgba(191, 76, 76, 0.4);
+}
+
+#orange-button{
+  background-color: rgba(211, 142, 63, 0.6);
 }
 

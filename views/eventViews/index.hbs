@@ -1,5 +1,5 @@
-
-
+<link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="/stylesheets/style.css" />
   <div class="nav-bar-dark">
     <ul>
       <li><a href="/private">Home</a></li>
@@ -14,7 +14,8 @@
     <div class="col-md-1"></div>
     <button class="btn btn-dark add-new-event"><a href="/events/new">Add a new event</a></button>
   </div>
-  <div class="row blah"></div>
+  <div class="row"></div>
+
     {{#each theList}}
     <div class="each-event col-md-5">
     
@@ -29,9 +30,9 @@
         <h2 class="col-md-8">{{this.name}}</h2>
       </div>
       <div class="row">
-        <div class="col-md-4"></div>
+        <div class="col-md-4 col-sm-1"></div>
         <div class="col-md-2"><img src="/images/user.png" alt="" class="user-icon">{{this.attendees.length}}</div>
-        <h4 class="">{{this.type}}</h4>
+        <h4 class="col-md-6">{{this.type}}</h4>
       </div>
       <div class="row">
         <div class="col-md-4"></div>
