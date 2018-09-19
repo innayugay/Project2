@@ -1,6 +1,6 @@
 <link rel ="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="style.css">
-<div class="nav-bar">
+<div class="nav-bar-dark">
     <ul>
       <li><a href="/private">Home</a></li>
       <li><a href="/profile/{{theUser._id}}">My profile</a></li>
@@ -8,21 +8,62 @@
     </ul>
 
 </div>
+      
+  <div class="event-index container-fluid">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <button class="btn btn-dark add-new-event"><a href="/establishments/new">Add a new establishment</a></button>
+  </div>
+  <div class="row"></div>
 
-<div class="est-page container-fluid">
-  {{#each theList}}
-    <h2>{{this.name}}</h2>
+    {{#each theList}}
+    <div class="each-event col-md-5">
+    
+      {{#if this.imgPath}}
+      <div class="row">
+        <div class="col-md-1"></div>
+        <img src="{{this.imgPath}}" alt="" class="each-event-image col-md-10">
+      </div>
+      {{/if}}
+      <div class="row">
+        <div class="col-md-2"></div>
+        <h2 class="col-md-8">{{this.name}}</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-1"></div>
+        <div class="col-md-2"><img src="/images/star.png" alt="" class="rating-star-icon">{{this.avgRating}}</div>
+        <h4 class="col-md-5">{{this.type}}</h4>
+      </div>
+      <div class="row">
+        <div class="col-md-4"></div>
+        <button class="btn btn-outline-light col-md-4"><a href="/establishments/{{this._id}}"> See details </a></button>
+      </div>
+    </div>
+    {{/each}}
+
+
+</div>
+
+
+
+
+
+
+
+
+    
+ 
+    {{!-- <h2>{{this.name}}</h2>
     <h4>{{this.type}}</h4>
     <h3>{{this.description}}</h3>
     <h3>{{this.address}}</h3>
-    <button class="btn btn-primary"><a href="establishments/{{this._id}}"> See details </a></button>
+    <button class="btn btn-primary"><a href="establishments/{{this._id}}"> See details </a></button> --}}
     {{!-- <button class="btn btn-primary"><a href="establishments/edit/{{this._id}}">Edit</a></button> --}}
-    <form action="establishments/delete/{{this._id}}" method="POST">
+    {{!-- <form action="establishments/delete/{{this._id}}" method="POST">
         <button class="btn btn-danger">Delete</button>
     </form>
 
   {{/each}}
+ </div> --}}
 
-
-  <button><a href="/establishments/new">Add a new establishment</a></button>
 </div>

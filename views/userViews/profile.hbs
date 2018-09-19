@@ -11,27 +11,30 @@
 
 <div class="profile-page">
 
+<h2>this is your profile
 
-this is your profile
-
-{{theUser.username}}
-
+<span class="hello-user">{{theUser.username}}</span></h2>
 
 
-<button class="btn btn-info"><a href="/profile/edit/{{theUser._id}}">Edit your profile</a></button>
+
+
+{{!-- <button class="btn btn-info"><a href="/profile/edit/{{theUser._id}}">Edit your profile</a></button> --}}
 
 <h3>My Events:</h3>
 
 {{#each theUser.events}}
-  <h4><a href="/events/{{this._id}}">{{this.name}}</a></h4>
-
+  <h4><a href="/events/{{this._id}}"><span class="my-things">{{this.name}}</span></a></h4>
+  
 {{/each}}
 
 
 <h3>My Places:</h3>
 
   {{#each theUser.establishments}}
-  <h4><a href="/establishments/{{this._id}}">{{this.name}}</a></h4>
+  <h4><a href="/establishments/{{this._id}}"><span class="my-things">{{this.name}}</span></a></h4>
+  {{!-- <form action="profile/delete/{{this._id}}">
+    <button>Delete from my list</button>
+  </form> --}}
   {{/each}}
 {{!-- <button class="btn btn-success">add events</button> --}}
 

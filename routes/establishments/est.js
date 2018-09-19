@@ -12,6 +12,7 @@ const uploadCloud = require('../../config/cloudinary.js');
     Establishment.find()
       .then((listOfEstablishments)=>{
         console.log(listOfEstablishments);
+        res.locals.bodyClass = 'tanBackground'
         res.render('establishmentViews/index',{theList: listOfEstablishments, theUser: req.session.currentUser})
   })
   .catch((err)=>{
@@ -79,12 +80,13 @@ router.get('/establishments/edit/:estID', (req, res, next)=>{
 
 })
 
-router.post('/establishments/update/:estID', (req, res, next)=>{
+router.post('/establishments/update/:estID', uploadCloud.single('photo'), (req, res, next)=>{
   Establishment.findByIdAndUpdate(req.params.estID, {
      name: req.body.updatedName,
      type: req.body.updatedType,
      description: req.body.updatedDescription,
      address: req.body.updatedAddress,
+     imgPath: req.file.url
 
   })
   .then((response)=>{

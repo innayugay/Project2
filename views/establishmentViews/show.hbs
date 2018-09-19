@@ -11,16 +11,16 @@
 
 <div class="show-est container-fluid">
 
-  <h2>{{est.name}}</h2>
-  <h3>{{est.type}}</h3>
+  <h1><span class="capitalize bold">{{est.name}}</span></h1>
+  <h3 class="capitalize-sm">{{est.type}}</h3>
+  <h5> Where? <span class="capitalize-sm">{{est.address}}</span></h5>
   {{#if est.avgRating}}
   <h3> <img src="/images/star.png" alt="" class="rating-star-icon">
     Rating: {{est.avgRating}}</h3>
   {{/if}}
-  <h5>{{est.address}}</h5>
-  <p>{{est.description}}</p>
 
 
+  <h3>{{est.description}}</h3>
 
   <form action="favourite/{{est._id}}" method="POST">
     <button class="btn btn-warning">Add to favourites</button>
@@ -31,10 +31,10 @@
   {{/if}}
 
 
-  <div><img src="{{est.imgPath}}" alt=""></div>
-  <button class="btn btn-primary"><a href="edit/{{est._id}}">Edit</a></button>
+  <div><img src="{{est.imgPath}}" alt="" class="event-image"></div>
+  <button class="btn btn-outline-warning" id="orange-button"><a href="edit/{{est._id}}">Edit</a></button>
 
-  <h4>Have you been here? Tell us what you think</h4>
+  <h4>Have you been here? Tell us what you think!</h4>
   <h4><a href="rating/{{est._id}}">Give this place a rating</a></h4>
 
 
