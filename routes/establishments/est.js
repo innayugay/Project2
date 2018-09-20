@@ -179,6 +179,25 @@ router.post('/establishments/rating/:theID', (req,res,next)=>{
 })
 
 
+router.post('/estList/delete/:id', (req, res, next) => {
+  User.findById(req.user.id)
+  .then((theUserIGet)=>{
+      let index = theUserIGet.establishments.indexOf(req.params.id);
+      theUserIGet.establishments.splice(index, 1);
+      theUserIGet.save()
+
+      .then((resp)=>{
+        res.redirect('/establishments')
+      })
+      .catch(err=>next(err))
+    })
+  .catch((err)=>{
+      next(err)
+  })
+
+})
+
+
 router.get('/establishments/:theid', (req, res, next)=>{
 
   Establishment.findById(req.params.theid)

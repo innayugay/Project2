@@ -155,6 +155,35 @@ router.post('/events/interested/:theID', (req,res,next)=>{
   })
 
 
+  router.post('/eventList/delete/:id', (req, res, next) => {
+    User.findById(req.user.id)
+    .then((theUserIGet)=>{
+        let index = theUserIGet.events.indexOf(req.params.id);
+        theUserIGet.events.splice(index, 1);
+        theUserIGet.save()
+
+          Event.findById(req.params.id)
+          .then((theEventIGet)=>{
+            let i = theEventIGet.attendees.indexOf(theUserIGet)
+            theEventIGet.attendees.splice(i,1)
+            theEventIGet.save()
+          })
+          .catch(err=>next(err))
+
+        .then((resp)=>{
+          res.redirect('/events')
+        })
+        .catch(err=>next(err))
+      })
+    .catch((err)=>{
+        next(err)
+    })
+
+})
+  
+
+
+
 
 router.get('/events/:theid', (req, res, next)=>{
 
@@ -170,6 +199,9 @@ router.get('/events/:theid', (req, res, next)=>{
 
 })
 
+
+
+
 router.get('/events/:theid/attendees', (req, res, next)=>{
 
   Event.findById(req.params.theid)
@@ -183,17 +215,6 @@ router.get('/events/:theid/attendees', (req, res, next)=>{
   })
 
 })
-
-router.post('/eventList/delete/:id', (req, res, next) => {
-  User.findById(req.user._id)
-  .then((theUserIGet)=>{
-    Event.findById(req.params.id)
-    .then((theEventIGet)=>{
-      let newAttendees = theEventIGet.attendees.splice()
-    })
-    })
-})
-
 
 
 

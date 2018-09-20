@@ -154,7 +154,7 @@ label {
   text-align: center; }
 
 .show-est-content, .show-event-content {
-  background-color: rgba(48, 35, 28, 0.8);
+  background-color: rgba(45, 39, 34, 0.8);
   height: 70vh;
   width: 70vw;
   margin: 0 auto;
@@ -162,5 +162,8 @@ label {
 
 .creamy-text {
   color: #f6f1ed; }
+
+.profile-page {
+  padding: 10vh; }
 
 /*# sourceMappingURL=style.css.map */

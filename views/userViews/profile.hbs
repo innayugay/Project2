@@ -37,11 +37,23 @@
 <h3>My Places:</h3>
 
   {{#each theUser.establishments}}
+  <div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-4">
+    <h4><a href="/establishments/{{this._id}}"><span class="my-things">{{this.name}}</span></a></h4>
+  </div>
+  <div class="col-md-1"></div>
+  <form action="/estList/delete/{{this._id}}" method="post">
+      <button class="btn btn-outline-light">Delete from my list</button>
+  </form>
+</div>
+{{/each}}
+{{!-- 
   <h4><a href="/establishments/{{this._id}}"><span class="my-things">{{this.name}}</span></a></h4>
   <form action="profile/delete/{{this._id}}">
     <button>Delete from my list</button>
   </form>
-  {{/each}}
-{{!-- <button class="btn btn-success">add events</button> --}}
+  {{/each}} --}}
 
-</div>
+
+{{!-- </div> --}}
