@@ -75,7 +75,7 @@ a:hover {
 .index-content button {
   background-color: rgba(68, 67, 67, 0.3); }
 
-.private-page, .show-event, .edit-event {
+.private-page, .show-event, .edit-event, .profile-page, .new-event, .new-est, .edit-est, .est-rating, .attendees-page {
   padding: 5vh; }
 
 .event-index {
@@ -163,7 +163,10 @@ label {
 .creamy-text {
   color: #f6f1ed; }
 
-.profile-page {
-  padding: 10vh; }
+.rating-text {
+  margin-top: 5vh; }
+
+.rating-text > h5 > a {
+  color: #ffc107; }
 
 /*# sourceMappingURL=style.css.map */

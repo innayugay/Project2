@@ -6,9 +6,14 @@
     </ul>
 
 </div>
-<h1>these people are interested in the event: </h1>
+<div class="attendees-page">
 
-{{#each event.attendees}}
-<h3><a href="/profile/{{this._id}}">{{this.username}}</a></h3>
+      <h1>These users are interested in the event: </h1>
 
-{{/each}}
+      {{#each event.attendees}}
+      <h3><a href="/profile/{{this._id}}">{{this.username}}</a></h3>
+
+      {{/each}}
+
+
+</div>

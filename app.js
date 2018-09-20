@@ -22,7 +22,7 @@ const Establishment = require('./models/Establishment')
 
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/my-project', {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })

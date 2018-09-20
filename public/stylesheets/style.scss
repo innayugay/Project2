@@ -90,11 +90,7 @@ a:hover{
   background-color: rgba(68, 67, 67, 0.3)
 }
 
-.private-page , .show-event, .edit-event{
-  // background-color: rgb(246, 241, 237);  
-  // background-color: rgb(181, 163, 161);
-  // // height: 100vh;
-  // background-size: cover;
+.private-page , .show-event, .edit-event, .profile-page, .new-event, .new-est, .edit-est, .est-rating, .attendees-page{
   padding: 5vh;
 }
 
@@ -199,6 +195,14 @@ label{
   color: rgb(246, 241, 237);
 }
 
-.profile-page{
-  padding: 10vh;
+// .profile-page, .new-event, .new-est{
+//   padding: 10vh;
+// }
+
+.rating-text{
+  margin-top: 5vh;
+}
+
+.rating-text >h5 > a{
+  color: #ffc107;
 }
