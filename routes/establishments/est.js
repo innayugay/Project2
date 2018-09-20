@@ -183,6 +183,7 @@ router.get('/establishments/:theid', (req, res, next)=>{
 
   Establishment.findById(req.params.theid)
   .then((theEstablishment)=>{
+  //   res.locals.
     res.render('establishmentViews/show', {est: theEstablishment, theUser: req.session.currentUser})
   })
   .catch((err)=>{

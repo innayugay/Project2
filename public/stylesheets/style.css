@@ -76,8 +76,6 @@ a:hover {
   background-color: rgba(68, 67, 67, 0.3); }
 
 .private-page, .show-event, .edit-event {
-  background-color: #b5a3a1;
-  background-size: cover;
   padding: 5vh; }
 
 .event-index {
@@ -146,7 +144,23 @@ label {
 
 .coolbtn {
   float: left;
-  max-height: 65vh;
+  height: 60vh;
   background-color: rgba(114, 72, 49, 0.4); }
+
+.show-est, .show-event {
+  height: 100vh;
+  padding: 5vh;
+  margin-left: 5vw;
+  text-align: center; }
+
+.show-est-content, .show-event-content {
+  background-color: rgba(48, 35, 28, 0.8);
+  height: 70vh;
+  width: 70vw;
+  margin: 0 auto;
+  padding: 5vh; }
+
+.creamy-text {
+  color: #f6f1ed; }
 
 /*# sourceMappingURL=style.css.map */

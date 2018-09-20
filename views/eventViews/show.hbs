@@ -9,36 +9,39 @@
 
   </div>
 
-<div class="show-event container-fluid">
-  <h1><span class="capitalize bold">{{event.name}}</span></h1>
-  <h3 class="capitalize-sm">{{event.type}}</h3>
-  <h5>{{event.address}}</h5>
-  <h5>When? <span class="bold">{{event.date}}</span></h5>
+<div class="show-event container-fluid" style=" background: url({{event.imgPath}}); background-size:cover">
+  <div class="show-event-content">
 
-  <div> 
-    <img src="/images/user.png" alt="" class="user-icon">
-    <a href="/events/{{event._id}}/attendees">{{event.attendees.length}} people are interested in this event</a> 
-    <form action="/events/interested/{{event._id}}" method="POST">
-        <button class="btn btn-warning">I am interested in this event</button>
-    </form>
-     {{#if message}}
-        <div class="error-message">{{ message }}</div>
-      {{/if}}
+        <h1><span class="capitalize creamy-text">{{event.name}}</span></h1>
+        <h4 class="capitalize-sm creamy-text">{{event.type}}</h4>
+        <h4>{{event.address}}</h4>
+        <h4 class="bold creamy-text"> When? {{event.date}}</span></h4>
 
-  </div>
- 
-  <h3>{{event.description}}</h3>
+        <div> 
+          <img src="/images/user.png" alt="" class="user-icon">
+          <a href="/events/{{event._id}}/attendees">{{event.attendees.length}} people are interested in this event</a> 
+          <form action="/events/interested/{{event._id}}" method="POST">
+              <button class="btn btn-warning">I am interested in this event</button>
+          </form>
+          {{#if message}}
+              <div class="error-message">{{ message }}</div>
+            {{/if}}
 
-  <div><img src="{{event.imgPath}}" alt="" class="event-image"></div>
+        </div>
+      
+        <p class="creamy-text">{{event.description}}</p>
 
-  <div class="row">
-      <div class="col-md-1"></div>
-      <a href="edit/{{event._id}}" class="btn btn-outline-warning col-md-2" id="orange-button">Edit this event</a>
-      <div class="col-md-1"></div>
-      <form action="delete/{{event._id}}" method="POST">
-          <button class="btn btn-outline-danger" id="red-button">Delete</button>
-      </form>
+        {{!-- <div><img src="{{event.imgPath}}" alt="" class="event-image"></div> --}}
 
+        <div class="row">
+            <div class="col-md-3"></div>
+            <a href="edit/{{event._id}}" class="btn btn-outline-warning col-md-2" id="orange-button">Edit this event</a>
+            <div class="col-md-2"></div>
+            <form action="delete/{{event._id}}" method="POST">
+                <button class="btn btn-outline-danger" id="red-button">Delete</button>
+            </form>
+
+        </div>
   </div>
 
 </div>
