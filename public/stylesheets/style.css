@@ -84,17 +84,14 @@ a:hover {
   background-color: #f6f1ed;
   padding: 5vh; }
 
-.private-buttons {
-  margin-top: 4vh;
-  padding: 0;
-  display: flex;
-  justify-content: space-around; }
+.events-btn, .est-btn {
+  width: 50vw; }
 
 .private-buttons a {
   font-size: 3vh; }
 
 .private-images {
-  height: 20%;
+  height: 90%;
   width: 45vw; }
 
 .hello-user {
@@ -124,8 +121,8 @@ a:hover {
   font-size: 4vh; }
 
 .event-image {
-  margin-bottom: 2vh;
-  width: 80vw; }
+  margin: 2vh;
+  width: 50vw; }
 
 .fill-dark {
   background-color: rgba(61, 58, 58, 0.8); }
@@ -137,10 +134,19 @@ a:hover {
   background-color: rgba(211, 142, 63, 0.6); }
 
 label {
+  color: white;
   display: flex; }
 
 .my-things {
   color: white;
   font-size: 3vh; }
+
+.account-message {
+  color: white; }
+
+.coolbtn {
+  float: left;
+  max-height: 65vh;
+  background-color: rgba(114, 72, 49, 0.4); }
 
 /*# sourceMappingURL=style.css.map */

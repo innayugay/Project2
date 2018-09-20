@@ -12,7 +12,7 @@
 <div class="event-index container-fluid">
   <div class="row">
     <div class="col-md-1"></div>
-    <button class="btn btn-dark add-new-event"><a href="/events/new">Add a new event</a></button>
+    <a href="/events/new" class="btn btn-dark add-new-event">Add a new event</a>
   </div>
   <div class="row"></div>
 
@@ -36,7 +36,7 @@
       </div>
       <div class="row">
         <div class="col-md-4"></div>
-        <button class="btn btn-outline-light col-md-4"><a href="/events/{{this._id}}"> See details </a></button>
+        <a href="/events/{{this._id}}" class="btn btn-outline-light col-md-4"> See details </a>
       </div>
     </div>
     {{/each}}

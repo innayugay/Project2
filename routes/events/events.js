@@ -184,6 +184,16 @@ router.get('/events/:theid/attendees', (req, res, next)=>{
 
 })
 
+router.post('/eventList/delete/:id', (req, res, next) => {
+  User.findById(req.user._id)
+  .then((theUserIGet)=>{
+    Event.findById(req.params.id)
+    .then((theEventIGet)=>{
+      let newAttendees = theEventIGet.attendees.splice()
+    })
+    })
+})
+
 
 
 

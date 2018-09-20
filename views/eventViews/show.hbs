@@ -33,7 +33,7 @@
 
   <div class="row">
       <div class="col-md-1"></div>
-      <button class="btn btn-outline-warning col-md-2" id="orange-button"><a href="edit/{{event._id}}">Edit this event</a></button>
+      <a href="edit/{{event._id}}" class="btn btn-outline-warning col-md-2" id="orange-button">Edit this event</a>
       <div class="col-md-1"></div>
       <form action="delete/{{event._id}}" method="POST">
           <button class="btn btn-outline-danger" id="red-button">Delete</button>
