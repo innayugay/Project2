@@ -160,9 +160,9 @@ router.post('/establishments/rating/:theID', (req,res,next)=>{
   Establishment.findById(req.params.theID)
   .then((theEstIGet)=>{
     theEstIGet.rating.push(req.body.rating);
-    // console.log('after push: ', theEstIGet.rating)
+
     const theTotalRat = theEstIGet.rating.reduce((a,b) => Number(a)+ Number(b));
-    // console.log("theTotalRat: ", theTotalRat)
+
     theEstIGet.avgRating = (theTotalRat/theEstIGet.rating.length).toFixed(2);
     console.log('after everything: ', theEstIGet);
     theEstIGet.save()

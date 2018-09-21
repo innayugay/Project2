@@ -5,7 +5,7 @@ const estSchema = new Schema({
   type: String,
   name: String,
   description: String,
-  address: String,
+  location: { type: { type: String }, coordinates: [Number] },
   rating: Array,
   // totalRating: 0,
   avgRating : {type: Number, default: 0},

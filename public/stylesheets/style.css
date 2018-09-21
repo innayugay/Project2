@@ -20,7 +20,7 @@
   background-color: #f6f1ed; }
 
 .nav-bar-dark {
-  background-color: #b5a3a1; }
+  background-color: #6a5750; }
 
 .nav-bar ul, .nav-bar-dark ul {
   display: flex;
@@ -168,5 +168,9 @@ label {
 
 .rating-text > h5 > a {
   color: #ffc107; }
+
+#map {
+  width: 50vw;
+  height: 40vh; }
 
 /*# sourceMappingURL=style.css.map */

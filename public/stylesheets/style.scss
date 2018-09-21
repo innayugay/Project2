@@ -28,7 +28,8 @@
 
 }
 .nav-bar-dark{
-  background-color: rgb(181, 163, 161);
+  // background-color: rgb(181, 163, 161);
+  background-color: rgb(106, 87, 80);
 }
 .nav-bar ul, .nav-bar-dark ul{
   display: flex;
@@ -205,4 +206,9 @@ label{
 
 .rating-text >h5 > a{
   color: #ffc107;
+}
+
+#map{
+  width: 50vw;
+  height: 40vh;
 }

@@ -35,12 +35,13 @@
         {{!-- <div><img src="{{est.imgPath}}" alt="" class="event-image"></div> --}}
         <div class="row">
           <div class="col-md-4"></div>
-          <button class="btn btn-outline-warning" id="orange-button"><a href="edit/{{est._id}}">Edit</a></button>
+          <button class="btn btn-outline-warning" id=""><a href="edit/{{est._id}}">Edit</a></button>
           <div class="col-md-3"></div>
           <form action="/establishments/delete/{{est._id}}">
-            <button class="btn btn-outline-danger" id="red-button">Delete</button>
+            <button class="btn btn-outline-danger" id="">Delete</button>
           </form>
         </div>
+
         <div class="row rating-text">
           <div class="col-md-1"></div>
           <h5><span class="creamy-text">Have you been here? Tell us what you think!</span> </h5>
@@ -48,6 +49,7 @@
           <h5><a href="rating/{{est._id}} ">Give this place a rating</a></h5>
 
         </div>
+        {{!-- <div id="map"></div> --}}
 
         
 
